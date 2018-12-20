@@ -5,6 +5,8 @@ const (
 	NO_ABREV                   = -1
 )
 
+type AbrevStyle string
+
 const (
 	ABREV_CLEAN  = "ABREV_CLEAN"
 	ABREV_PERIOD = "ABREV_PERIOD"

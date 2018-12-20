@@ -1,7 +1,6 @@
 package UniName
 
 import (
-	"fmt"
 	"regexp"
 	"strings"
 )
@@ -50,7 +49,7 @@ func brazil_full_suffix(value string) string {
 	return value
 }
 
-func brazil_full_name(name WesternName, style NameStyle, max_len int) string {
+func brazil_full_name(name WesternName, style NameStyle) string {
 	if style == STYLE_BRAZIL_OFFICIAL {
 		ans := str_joiner(" ", false,
 			name.First,
@@ -61,7 +60,7 @@ func brazil_full_name(name WesternName, style NameStyle, max_len int) string {
 			brazil_full_suffix(name.Suffix))
 		return strings.ToUpper(trim_spaces_and_doubles(ans))
 	}
-	if style == STYLE_BRAZIL_COMMON && max_len == NO_ABREV {
+	if style == STYLE_BRAZIL_COMMON {
 		ans := str_joiner(" ", true,
 			name.Prefix,
 			name.GetFisrtOrSocial(),
@@ -76,5 +75,9 @@ func brazil_full_name(name WesternName, style NameStyle, max_len int) string {
 		return brazil_to_title(trim_spaces_and_doubles(ans))
 	}
 
+	return name.Original
+}
+
+func brazil_abrev(name WesternName, style AbrevStyle, max_len int) string {
 	return name.Original
 }
